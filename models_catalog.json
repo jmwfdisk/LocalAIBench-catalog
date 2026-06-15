@@ -253,6 +253,24 @@
       "modality": "텍스트",
       "useCases": ["추론", "수학", "코딩"],
       "tags": ["reasoning", "new"]
+    },
+    {
+      "id": "gemma3-4b-vlm",
+      "name": "Gemma 3 4B (비전)",
+      "publisher": "Google",
+      "parameters": "4B",
+      "quantization": "4bit",
+      "fileSizeMB": 2500,
+      "contextLength": 8192,
+      "license": "Gemma",
+      "multimodal": true,
+      "minRAMGB": 8,
+      "isBuiltIn": false,
+      "downloadURL": null,
+      "mlxRepoID": "mlx-community/gemma-3-4b-it-4bit",
+      "modality": "텍스트·비전",
+      "useCases": ["일반 대화", "비전 이해", "추론"],
+      "tags": ["recommended", "new"]
     }
   ]
 }
