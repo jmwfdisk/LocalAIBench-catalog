@@ -19,10 +19,20 @@
   .a { color:#aeb6c6; margin:0 0 6px; }
   a { color:#5b8cff; text-decoration:none; } a:hover { text-decoration:underline; }
   footer { text-align:center; color:#6b7488; margin-top:40px; font-size:.9rem; }
-  .shots { display:flex; gap:14px; overflow-x:auto; padding:8px 2px 14px; -webkit-overflow-scrolling:touch; }
+
+  .gallery { position:relative; }
+  .shots { display:flex; gap:14px; overflow-x:auto; padding:8px 2px 14px; -webkit-overflow-scrolling:touch; scroll-behavior:smooth; }
+  .shots::-webkit-scrollbar { height:6px; } .shots::-webkit-scrollbar-thumb { background:#2a3346; border-radius:3px; }
   .shots figure { flex:0 0 auto; margin:0; width:228px; text-align:center; }
   .shots img { width:228px; border-radius:20px; border:1px solid #222a3a; display:block; }
   .shots figcaption { color:#8b95a7; font-size:.82rem; margin-top:8px; }
+  .nav { position:absolute; top:42%; transform:translateY(-50%); z-index:2;
+    width:46px; height:46px; border-radius:50%; border:1px solid #2a3346;
+    background:rgba(20,25,37,0.9); color:#e7ebf2; font-size:1.7rem; line-height:1; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; transition:background .15s; }
+  .nav:hover { background:#1c2333; }
+  .nav.prev { left:-10px; } .nav.next { right:-10px; }
+  @media (hover: none), (max-width: 640px) { .nav { display:none; } }
 </style>
 </head>
 <body>
@@ -35,12 +45,16 @@
   <section>
     <h2>앱 소개</h2>
     <p>클라우드 없이 아이폰에서 직접 AI 모델을 실행하고, 생성 속도·메모리·발열과 모델별 능력을 측정하는 온디바이스 벤치마크 앱입니다. 모든 처리는 기기 안에서 이루어지며 대화·이미지·음성은 외부로 전송되지 않습니다.</p>
-    <div class="shots">
-      <figure><img src="screenshots/1_chat.png" alt="채팅과 실시간 성능"><figcaption>실시간 성능 측정</figcaption></figure>
-      <figure><img src="screenshots/2_benchmark.png" alt="종합 점수 벤치마크"><figcaption>종합 점수 벤치마크</figcaption></figure>
-      <figure><img src="screenshots/3_menu.png" alt="성능 테스트 메뉴"><figcaption>능력·음성 테스트</figcaption></figure>
-      <figure><img src="screenshots/4_library.png" alt="모델 라이브러리"><figcaption>모델 라이브러리</figcaption></figure>
-      <figure><img src="screenshots/5_features.png" alt="비전·음성 기능"><figcaption>비전·음성 입력</figcaption></figure>
+    <div class="gallery">
+      <button class="nav prev" type="button" aria-label="이전" onclick="scrollShots(-1)">&lsaquo;</button>
+      <div class="shots" id="shots">
+        <figure><img src="screenshots/1_chat.png" alt="채팅과 실시간 성능"><figcaption>실시간 성능 측정</figcaption></figure>
+        <figure><img src="screenshots/2_benchmark.png" alt="종합 점수 벤치마크"><figcaption>종합 점수 벤치마크</figcaption></figure>
+        <figure><img src="screenshots/3_menu.png" alt="성능 테스트 메뉴"><figcaption>능력·음성 테스트</figcaption></figure>
+        <figure><img src="screenshots/4_library.png" alt="모델 라이브러리"><figcaption>모델 라이브러리</figcaption></figure>
+        <figure><img src="screenshots/5_features.png" alt="비전·음성 기능"><figcaption>비전·음성 입력</figcaption></figure>
+      </div>
+      <button class="nav next" type="button" aria-label="다음" onclick="scrollShots(1)">&rsaquo;</button>
     </div>
   </section>
 
@@ -68,5 +82,11 @@
 
   <footer>© 2026 gomgomgirlmarket</footer>
 </div>
+<script>
+  function scrollShots(dir){
+    var el = document.getElementById('shots');
+    el.scrollBy({ left: dir * 242, behavior: 'smooth' });
+  }
+</script>
 </body>
 </html>
