@@ -165,24 +165,6 @@
       "tags": ["reference"]
     },
     {
-      "id": "exaone4-1.2b",
-      "name": "EXAONE 4.0 1.2B",
-      "publisher": "LG AI",
-      "parameters": "1.2B",
-      "quantization": "8bit",
-      "fileSizeMB": 1300,
-      "contextLength": 65536,
-      "license": "EXAONE AI Model License",
-      "multimodal": false,
-      "minRAMGB": 4,
-      "isBuiltIn": false,
-      "downloadURL": null,
-      "mlxRepoID": "mlx-community/exaone-4.0-1.2b-8bit",
-      "modality": "텍스트",
-      "useCases": ["한국어", "추론", "일반 대화"],
-      "tags": ["korean", "recommended", "new"]
-    },
-    {
       "id": "gemma3-1b",
       "name": "Gemma 3 1B",
       "publisher": "Google",
