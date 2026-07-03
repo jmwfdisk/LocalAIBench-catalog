@@ -15,7 +15,7 @@
   body { margin:0; background:#0b0e16; color:#e7ebf2;
     font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Segoe UI",sans-serif; line-height:1.7; }
   .wrap { max-width:760px; margin:0 auto; padding:48px 22px 80px; }
-  header { text-align:center; margin-bottom:36px; }
+  header { text-align:center; margin-bottom:10px; }
   .app-icon { width:120px; height:120px; border-radius:27px; display:block; margin:0 auto 18px;
     border:1px solid #222a3a; box-shadow:0 10px 30px rgba(0,0,0,0.45); }
   h1 { font-size:2rem; margin:0 0 6px; }
@@ -39,6 +39,15 @@
   a { color:#5b8cff; text-decoration:none; } a:hover { text-decoration:underline; }
   footer { text-align:center; color:#6b7488; margin-top:40px; font-size:.9rem; }
 
+  /* 한/영 전환 토글 — 카드 밖 우측 상단 */
+  .lang-row { display:flex; justify-content:flex-end; margin:0 0 8px; }
+  .lang-toggle { display:inline-flex; border:1px solid #2a3346; border-radius:999px;
+    background:#141925; overflow:hidden; }
+  .lang-toggle button { appearance:none; border:0; background:transparent; color:#8b95a7;
+    font:inherit; font-size:.85rem; font-weight:700; padding:6px 16px; cursor:pointer;
+    transition:background .15s, color .15s; }
+  .lang-toggle button.on { background:linear-gradient(135deg,#3a7bff,#7b5bff); color:#fff; }
+
   .gallery { position:relative; }
   .shots { display:flex; gap:14px; overflow-x:auto; padding:8px 2px 14px; -webkit-overflow-scrolling:touch; scroll-behavior:smooth; }
   .shots::-webkit-scrollbar { height:6px; } .shots::-webkit-scrollbar-thumb { background:#2a3346; border-radius:3px; }
@@ -59,64 +68,71 @@
   <header>
     <img class="app-icon" src="appicon.png" alt="Local AI Bench 앱 아이콘">
     <h1>Local AI Bench</h1>
-    <p>온디바이스 AI 성능·능력 벤치마크</p>
+    <p data-en="On-device AI performance &amp; capability benchmark">온디바이스 AI 성능·능력 벤치마크</p>
     <a class="download" href="https://apps.apple.com/us/app/local-ai-bench/id6780884116">
       <svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-      App Store에서 다운로드
+      <span data-en="Download on the App Store">App Store에서 다운로드</span>
     </a>
   </header>
 
+  <div class="lang-row">
+    <div class="lang-toggle" role="group" aria-label="언어 선택 / Language">
+      <button id="btnKo" type="button" onclick="setLang('ko')">한국어</button>
+      <button id="btnEn" type="button" onclick="setLang('en')">English</button>
+    </div>
+  </div>
+
   <section>
-    <h2>새 소식<span class="badge">v1.1.0</span></h2>
+    <h2><span data-en="What's New">새 소식</span><span class="badge">v1.1.0</span></h2>
     <ul class="news" style="margin:0; padding-left:20px;">
-      <li><strong>Gemma 4 지원</strong> — Google 최신 온디바이스 모델(E2B)을 받아 바로 실행·측정</li>
-      <li><strong>🌐 웹 검색</strong> — 켜면 위키백과 자료를 모델에 제공해 최신 정보 질문도 가능 (추론은 100% 온디바이스, 오프라인이면 자동 생략)</li>
-      <li><strong>한/영 UI 전환</strong> — 상단 토글로 앱 언어 즉시 변경</li>
-      <li>모델 다운로드 진행률·안정성 개선</li>
+      <li data-en="<strong>Gemma 4 support</strong> — download and run Google's latest on-device model (E2B)"><strong>Gemma 4 지원</strong> — Google 최신 온디바이스 모델(E2B)을 받아 바로 실행·측정</li>
+      <li data-en="<strong>🌐 Web search</strong> — when enabled, fetches Wikipedia references so you can ask about recent events (inference stays 100% on-device; auto-skipped offline)"><strong>🌐 웹 검색</strong> — 켜면 위키백과 자료를 모델에 제공해 최신 정보 질문도 가능 (추론은 100% 온디바이스, 오프라인이면 자동 생략)</li>
+      <li data-en="<strong>Korean/English UI</strong> — switch the app language instantly from the top bar"><strong>한/영 UI 전환</strong> — 상단 토글로 앱 언어 즉시 변경</li>
+      <li data-en="Improved model download progress and reliability">모델 다운로드 진행률·안정성 개선</li>
     </ul>
   </section>
 
   <section>
-    <h2>앱 소개</h2>
-    <p>클라우드 없이 아이폰에서 직접 AI 모델을 실행하고, 생성 속도·메모리·발열과 모델별 능력을 측정하는 온디바이스 벤치마크 앱입니다. 모든 처리는 기기 안에서 이루어지며 대화·이미지·음성은 외부로 전송되지 않습니다.</p>
+    <h2 data-en="About">앱 소개</h2>
+    <p data-en="An on-device benchmark app that runs AI models directly on your iPhone — no cloud — and measures generation speed, memory, thermals, and per-model capability. Everything is processed on the device; conversations, images, and audio never leave it.">클라우드 없이 아이폰에서 직접 AI 모델을 실행하고, 생성 속도·메모리·발열과 모델별 능력을 측정하는 온디바이스 벤치마크 앱입니다. 모든 처리는 기기 안에서 이루어지며 대화·이미지·음성은 외부로 전송되지 않습니다.</p>
     <div class="gallery">
       <button class="nav prev" type="button" aria-label="이전" onclick="scrollShots(-1)">&lsaquo;</button>
       <div class="shots" id="shots">
-        <figure><img src="screenshots/1_chat.png" alt="채팅과 실시간 성능"><figcaption>실시간 성능 측정</figcaption></figure>
-        <figure><img src="screenshots/2_benchmark.png" alt="종합 점수 벤치마크"><figcaption>종합 점수 벤치마크</figcaption></figure>
-        <figure><img src="screenshots/3_menu.png" alt="성능 테스트 메뉴"><figcaption>능력·음성 테스트</figcaption></figure>
-        <figure><img src="screenshots/4_library.png" alt="모델 라이브러리"><figcaption>모델 라이브러리</figcaption></figure>
-        <figure><img src="screenshots/5_features.png" alt="비전·음성 기능"><figcaption>비전·음성 입력</figcaption></figure>
-        <figure><img src="screenshots/6_gemma4.png" alt="Gemma 4 지원과 한/영 전환"><figcaption>Gemma 4 · 한/영 전환</figcaption></figure>
+        <figure><img src="screenshots/1_chat.png" alt="채팅과 실시간 성능"><figcaption data-en="Live performance metrics">실시간 성능 측정</figcaption></figure>
+        <figure><img src="screenshots/2_benchmark.png" alt="종합 점수 벤치마크"><figcaption data-en="Composite-score benchmark">종합 점수 벤치마크</figcaption></figure>
+        <figure><img src="screenshots/3_menu.png" alt="성능 테스트 메뉴"><figcaption data-en="Capability &amp; speech tests">능력·음성 테스트</figcaption></figure>
+        <figure><img src="screenshots/4_library.png" alt="모델 라이브러리"><figcaption data-en="Model library">모델 라이브러리</figcaption></figure>
+        <figure><img src="screenshots/5_features.png" alt="비전·음성 기능"><figcaption data-en="Vision &amp; voice input">비전·음성 입력</figcaption></figure>
+        <figure><img src="screenshots/6_gemma4.png" alt="Gemma 4 지원과 한/영 전환"><figcaption data-en="Gemma 4 · KO/EN toggle">Gemma 4 · 한/영 전환</figcaption></figure>
       </div>
       <button class="nav next" type="button" aria-label="다음" onclick="scrollShots(1)">&rsaquo;</button>
     </div>
   </section>
 
   <section>
-    <h2>자주 묻는 질문</h2>
-    <p class="q">처음에 화면이 비어 있어요.</p>
-    <p class="a">좌측 상단 ☰(모델 라이브러리)에서 AI 모델을 먼저 다운로드한 뒤 선택하세요. 빠른 확인은 Gemma 3 1B·Qwen3-0.6B 같은 작은 모델을 권장합니다.</p>
-    <p class="q">추론이 동작하지 않아요.</p>
-    <p class="a">온디바이스 추론은 실제 기기(아이폰)에서 동작합니다. 기기 메모리에 맞는 작은 모델부터 시도해 주세요.</p>
-    <p class="q">모델 다운로드가 멈춰요.</p>
-    <p class="a">네트워크 상태를 확인하고 다시 시도하세요. 이미 받은 파일은 이어받습니다.</p>
-    <p class="q">AI 답변이 부정확하거나 부적절해요.</p>
-    <p class="a">온디바이스 AI 모델이 생성한 결과로, 부정확할 수 있습니다. 앱에서 응답을 길게 눌러 신고할 수 있고, 아래 이메일로도 신고할 수 있습니다.</p>
-    <p class="q">Gemma 4가 "실행할 수 없습니다"라고 나와요.</p>
-    <p class="a">Gemma 4는 앱 1.1.0 이상에서 실행됩니다. App Store에서 최신 버전으로 업데이트해 주세요.</p>
-    <p class="q">웹 검색을 켜면 대화가 외부로 전송되나요?</p>
-    <p class="a">아니요. 검색어만 위키백과 공개 API로 질의하며 계정·식별자·대화 내용은 전송하지 않습니다. AI 추론은 항상 기기 안에서 실행되고, 오프라인에서는 검색을 자동으로 건너뜁니다.</p>
+    <h2 data-en="FAQ">자주 묻는 질문</h2>
+    <p class="q" data-en="The screen is empty at first.">처음에 화면이 비어 있어요.</p>
+    <p class="a" data-en="Download an AI model first from the top-left ☰ (Model Library), then select it. For a quick start we recommend small models like Gemma 3 1B or Qwen3-0.6B.">좌측 상단 ☰(모델 라이브러리)에서 AI 모델을 먼저 다운로드한 뒤 선택하세요. 빠른 확인은 Gemma 3 1B·Qwen3-0.6B 같은 작은 모델을 권장합니다.</p>
+    <p class="q" data-en="Inference doesn't work.">추론이 동작하지 않아요.</p>
+    <p class="a" data-en="On-device inference runs on a physical iPhone. Start with a small model that fits your device's memory.">온디바이스 추론은 실제 기기(아이폰)에서 동작합니다. 기기 메모리에 맞는 작은 모델부터 시도해 주세요.</p>
+    <p class="q" data-en="A model download seems stuck.">모델 다운로드가 멈춰요.</p>
+    <p class="a" data-en="Check your network and try again. Already-downloaded parts are resumed.">네트워크 상태를 확인하고 다시 시도하세요. 이미 받은 파일은 이어받습니다.</p>
+    <p class="q" data-en="An AI answer is inaccurate or inappropriate.">AI 답변이 부정확하거나 부적절해요.</p>
+    <p class="a" data-en="Responses are generated by on-device AI models and may be inaccurate. Long-press a response in the app to report it, or email us below.">온디바이스 AI 모델이 생성한 결과로, 부정확할 수 있습니다. 앱에서 응답을 길게 눌러 신고할 수 있고, 아래 이메일로도 신고할 수 있습니다.</p>
+    <p class="q" data-en="Gemma 4 says it &quot;cannot run&quot;.">Gemma 4가 "실행할 수 없습니다"라고 나와요.</p>
+    <p class="a" data-en="Gemma 4 requires app version 1.1.0 or later. Please update to the latest version on the App Store.">Gemma 4는 앱 1.1.0 이상에서 실행됩니다. App Store에서 최신 버전으로 업데이트해 주세요.</p>
+    <p class="q" data-en="Does web search send my conversation anywhere?">웹 검색을 켜면 대화가 외부로 전송되나요?</p>
+    <p class="a" data-en="No. Only the search query is sent to the public Wikipedia API — no accounts, identifiers, or conversation content. AI inference always runs on your device, and search is skipped automatically when offline.">아니요. 검색어만 위키백과 공개 API로 질의하며 계정·식별자·대화 내용은 전송하지 않습니다. AI 추론은 항상 기기 안에서 실행되고, 오프라인에서는 검색을 자동으로 건너뜁니다.</p>
   </section>
 
   <section>
-    <h2>문의 · 신고</h2>
+    <h2 data-en="Contact &amp; Report">문의 · 신고</h2>
     <p><a href="mailto:gomgomgirls@naver.com">gomgomgirls@naver.com</a></p>
   </section>
 
   <section>
-    <h2>개인정보</h2>
-    <p><a href="privacy.html">개인정보 처리방침 보기</a></p>
+    <h2 data-en="Privacy">개인정보</h2>
+    <p><a href="privacy.html" data-en="View the Privacy Policy">개인정보 처리방침 보기</a></p>
   </section>
 
   <footer>© 2026 gomgomgirlmarket</footer>
@@ -126,6 +142,24 @@
     var el = document.getElementById('shots');
     el.scrollBy({ left: dir * 242, behavior: 'smooth' });
   }
+
+  // 한/영 전환 — data-en 이 있는 요소의 내용을 교체(원문 한국어는 data-ko 에 보관).
+  function setLang(lang){
+    var en = (lang === 'en');
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      if (!el.dataset.ko) el.dataset.ko = el.innerHTML;
+      el.innerHTML = en ? el.dataset.en : el.dataset.ko;
+    });
+    document.documentElement.lang = en ? 'en' : 'ko';
+    document.title = en ? 'Local AI Bench — Support' : 'Local AI Bench — 지원';
+    document.getElementById('btnKo').classList.toggle('on', !en);
+    document.getElementById('btnEn').classList.toggle('on', en);
+    try { localStorage.setItem('labLang', lang); } catch(e){}
+  }
+  // 저장된 선택 > 브라우저 언어 순으로 초기 언어 결정.
+  var saved = null;
+  try { saved = localStorage.getItem('labLang'); } catch(e){}
+  setLang(saved || ((navigator.language || '').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en'));
 </script>
 </body>
 </html>
