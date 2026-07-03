@@ -98,12 +98,12 @@
     <div class="gallery">
       <button class="nav prev" type="button" aria-label="이전" onclick="scrollShots(-1)">&lsaquo;</button>
       <div class="shots" id="shots">
-        <figure><img src="screenshots/1_chat.png" alt="채팅과 실시간 성능"><figcaption data-en="Live performance metrics">실시간 성능 측정</figcaption></figure>
-        <figure><img src="screenshots/2_benchmark.png" alt="종합 점수 벤치마크"><figcaption data-en="Composite-score benchmark">종합 점수 벤치마크</figcaption></figure>
-        <figure><img src="screenshots/3_menu.png" alt="성능 테스트 메뉴"><figcaption data-en="Capability &amp; speech tests">능력·음성 테스트</figcaption></figure>
-        <figure><img src="screenshots/4_library.png" alt="모델 라이브러리"><figcaption data-en="Model library">모델 라이브러리</figcaption></figure>
-        <figure><img src="screenshots/5_features.png" alt="비전·음성 기능"><figcaption data-en="Vision &amp; voice input">비전·음성 입력</figcaption></figure>
-        <figure><img src="screenshots/6_gemma4.png" alt="Gemma 4 지원과 한/영 전환"><figcaption data-en="Gemma 4 · KO/EN toggle">Gemma 4 · 한/영 전환</figcaption></figure>
+        <figure><img src="screenshots/ko/1_chat.png" data-src-en="screenshots/en/1_chat.png" alt="채팅과 실시간 성능"><figcaption data-en="Live performance metrics">실시간 성능 측정</figcaption></figure>
+        <figure><img src="screenshots/ko/2_benchmark.png" data-src-en="screenshots/en/2_benchmark.png" alt="종합 점수 벤치마크"><figcaption data-en="Composite-score benchmark">종합 점수 벤치마크</figcaption></figure>
+        <figure><img src="screenshots/ko/3_menu.png" data-src-en="screenshots/en/3_menu.png" alt="성능 테스트 메뉴"><figcaption data-en="Capability &amp; speech tests">능력·음성 테스트</figcaption></figure>
+        <figure><img src="screenshots/ko/4_library.png" data-src-en="screenshots/en/4_library.png" alt="모델 라이브러리"><figcaption data-en="Model library">모델 라이브러리</figcaption></figure>
+        <figure><img src="screenshots/ko/5_features.png" data-src-en="screenshots/en/5_features.png" alt="비전·음성 기능"><figcaption data-en="Vision &amp; voice input">비전·음성 입력</figcaption></figure>
+        <figure><img src="screenshots/ko/6_gemma4.png" data-src-en="screenshots/en/6_search.png" alt="Gemma 4 지원"><figcaption data-en="Latest Gemma 4 support">Gemma 4 · 한/영 전환</figcaption></figure>
       </div>
       <button class="nav next" type="button" aria-label="다음" onclick="scrollShots(1)">&rsaquo;</button>
     </div>
@@ -144,11 +144,16 @@
   }
 
   // 한/영 전환 — data-en 이 있는 요소의 내용을 교체(원문 한국어는 data-ko 에 보관).
+  // 갤러리 카드 이미지도 언어별 세트(screenshots/ko·en)로 함께 교체.
   function setLang(lang){
     var en = (lang === 'en');
     document.querySelectorAll('[data-en]').forEach(function(el){
       if (!el.dataset.ko) el.dataset.ko = el.innerHTML;
       el.innerHTML = en ? el.dataset.en : el.dataset.ko;
+    });
+    document.querySelectorAll('img[data-src-en]').forEach(function(img){
+      if (!img.dataset.srcKo) img.dataset.srcKo = img.getAttribute('src');
+      img.src = en ? img.dataset.srcEn : img.dataset.srcKo;
     });
     document.documentElement.lang = en ? 'en' : 'ko';
     document.title = en ? 'Local AI Bench — Support' : 'Local AI Bench — 지원';
