@@ -1,7 +1,25 @@
 {
   "schemaVersion": 2,
-  "updated": "2026-06-14",
+  "updated": "2026-07-03",
   "models": [
+    {
+      "id": "gemma4-e2b",
+      "name": "Gemma 4 E2B",
+      "publisher": "Google",
+      "parameters": "E2B",
+      "quantization": "4bit",
+      "fileSizeMB": 3600,
+      "contextLength": 32768,
+      "license": "Gemma",
+      "multimodal": false,
+      "minRAMGB": 8,
+      "isBuiltIn": false,
+      "downloadURL": null,
+      "mlxRepoID": "mlx-community/gemma-4-e2b-it-4bit",
+      "modality": "텍스트",
+      "useCases": ["일반 대화", "요약", "추론"],
+      "tags": ["recommended", "new"]
+    },
     {
       "id": "gemma2-2b",
       "name": "Gemma 2 2B",
