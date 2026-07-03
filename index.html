@@ -29,6 +29,11 @@
   .download svg { width:18px; height:18px; }
   section { background:#141925; border:1px solid #222a3a; border-radius:16px; padding:22px 24px; margin:18px 0; }
   h2 { font-size:1.1rem; margin:0 0 12px; }
+  .badge { display:inline-block; margin-left:8px; padding:2px 10px; border-radius:999px;
+    font-size:.75rem; font-weight:700; color:#9ef0b0; background:rgba(64,200,110,0.14);
+    border:1px solid rgba(64,200,110,0.35); vertical-align:2px; }
+  .news li { margin:6px 0; color:#aeb6c6; }
+  .news li strong { color:#e7ebf2; }
   .q { font-weight:600; margin:14px 0 4px; }
   .a { color:#aeb6c6; margin:0 0 6px; }
   a { color:#5b8cff; text-decoration:none; } a:hover { text-decoration:underline; }
@@ -62,6 +67,16 @@
   </header>
 
   <section>
+    <h2>새 소식<span class="badge">v1.1.0</span></h2>
+    <ul class="news" style="margin:0; padding-left:20px;">
+      <li><strong>Gemma 4 지원</strong> — Google 최신 온디바이스 모델(E2B)을 받아 바로 실행·측정</li>
+      <li><strong>🌐 웹 검색</strong> — 켜면 위키백과 자료를 모델에 제공해 최신 정보 질문도 가능 (추론은 100% 온디바이스, 오프라인이면 자동 생략)</li>
+      <li><strong>한/영 UI 전환</strong> — 상단 토글로 앱 언어 즉시 변경</li>
+      <li>모델 다운로드 진행률·안정성 개선</li>
+    </ul>
+  </section>
+
+  <section>
     <h2>앱 소개</h2>
     <p>클라우드 없이 아이폰에서 직접 AI 모델을 실행하고, 생성 속도·메모리·발열과 모델별 능력을 측정하는 온디바이스 벤치마크 앱입니다. 모든 처리는 기기 안에서 이루어지며 대화·이미지·음성은 외부로 전송되지 않습니다.</p>
     <div class="gallery">
@@ -72,6 +87,7 @@
         <figure><img src="screenshots/3_menu.png" alt="성능 테스트 메뉴"><figcaption>능력·음성 테스트</figcaption></figure>
         <figure><img src="screenshots/4_library.png" alt="모델 라이브러리"><figcaption>모델 라이브러리</figcaption></figure>
         <figure><img src="screenshots/5_features.png" alt="비전·음성 기능"><figcaption>비전·음성 입력</figcaption></figure>
+        <figure><img src="screenshots/6_gemma4.png" alt="Gemma 4 지원과 한/영 전환"><figcaption>Gemma 4 · 한/영 전환</figcaption></figure>
       </div>
       <button class="nav next" type="button" aria-label="다음" onclick="scrollShots(1)">&rsaquo;</button>
     </div>
@@ -87,6 +103,10 @@
     <p class="a">네트워크 상태를 확인하고 다시 시도하세요. 이미 받은 파일은 이어받습니다.</p>
     <p class="q">AI 답변이 부정확하거나 부적절해요.</p>
     <p class="a">온디바이스 AI 모델이 생성한 결과로, 부정확할 수 있습니다. 앱에서 응답을 길게 눌러 신고할 수 있고, 아래 이메일로도 신고할 수 있습니다.</p>
+    <p class="q">Gemma 4가 "실행할 수 없습니다"라고 나와요.</p>
+    <p class="a">Gemma 4는 앱 1.1.0 이상에서 실행됩니다. App Store에서 최신 버전으로 업데이트해 주세요.</p>
+    <p class="q">웹 검색을 켜면 대화가 외부로 전송되나요?</p>
+    <p class="a">아니요. 검색어만 위키백과 공개 API로 질의하며 계정·식별자·대화 내용은 전송하지 않습니다. AI 추론은 항상 기기 안에서 실행되고, 오프라인에서는 검색을 자동으로 건너뜁니다.</p>
   </section>
 
   <section>
