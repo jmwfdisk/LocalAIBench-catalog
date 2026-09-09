@@ -558,32 +558,6 @@
       "releaseDate": "2026-01-06"
     },
     {
-      "id": "exaone4-1.2b",
-      "name": "EXAONE 4.0 1.2B",
-      "publisher": "LG AI Research",
-      "parameters": "1.2B",
-      "quantization": "4bit",
-      "fileSizeMB": 731,
-      "contextLength": 65536,
-      "license": "EXAONE AI Model License",
-      "multimodal": false,
-      "minRAMGB": 4,
-      "isBuiltIn": false,
-      "downloadURL": null,
-      "mlxRepoID": "mlx-community/exaone-4.0-1.2b-4bit",
-      "modality": "텍스트",
-      "useCases": [
-        "한국어",
-        "간단 대화",
-        "요약"
-      ],
-      "tags": [
-        "korean",
-        "small"
-      ],
-      "releaseDate": "2025-07-15"
-    },
-    {
       "id": "granite41-3b",
       "name": "Granite 4.1 3B",
       "publisher": "IBM",
