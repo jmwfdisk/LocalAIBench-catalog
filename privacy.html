@@ -34,7 +34,7 @@
   <a class="back" href="./">&lsaquo; 지원 페이지로</a>
   <header>
     <h1>개인정보 처리방침</h1>
-    <p>Local AI Bench · 최종 업데이트 2026-09-10</p>
+    <p>Local AI Bench · 최종 업데이트 2026-09-12</p>
   </header>
 
   <section>
@@ -80,6 +80,8 @@
       <li><strong>AI 모델 다운로드</strong>: 사용자가 텍스트·비전·음성(Whisper) 모델을 받을 때 HuggingFace(huggingface.co)에 연결합니다. 이때 HuggingFace의 개인정보 처리방침이 적용됩니다(IP 주소 등 일반적인 웹 요청 정보).</li>
       <li><strong>모델 카탈로그 업데이트</strong>: 모델 목록을 GitHub에서 내려받습니다.</li>
       <li><strong>웹 검색(선택, 기본 꺼짐)</strong>: 켜면 질문에 답하기 전에 검색어만 위키백과 공개 API(ko/en.wikipedia.org)에 보내 문서 요약을 받습니다. 대화 내용·식별자는 보내지 않습니다.</li>
+      <li><strong>최신 뉴스 검색(선택, 웹 검색에 포함 · 1.1.2부터)</strong>: 웹 검색을 켠 상태에서 "요즘·오늘·최신·뉴스" 같은 최신 정보를 물으면, 검색어만 Google 뉴스 RSS(news.google.com)에 보내 기사 제목·언론사·날짜를 받습니다. 응답이 없으면 Bing 뉴스 RSS(bing.com)로 한 번 더 시도합니다. 기사 본문은 받지 않으며 대화 내용·식별자는 보내지 않습니다.</li>
+      <li><strong>검색 API 키(선택, 기본 없음 · 1.1.2부터)</strong>: 사용자가 직접 발급한 Brave Search 또는 Tavily API 키를 ⚙️ 설정에 입력하면, 위 검색어가 위키백과·뉴스 대신 해당 업체 API로 전송돼 검색 결과 발췌를 받습니다. 키는 이 기기의 Keychain에만 저장되며 백업·동기화·앱 개발자 전송이 없습니다. 언제든 설정에서 삭제할 수 있고, 삭제하면 위키백과·뉴스 RSS 경로로 돌아갑니다. 해당 업체의 개인정보 처리방침과 무료 이용 한도가 적용됩니다.</li>
       <li><strong>현재 날씨(선택)</strong>: 위치 정보와 웹 검색을 모두 켠 상태에서 날씨를 물으면, 반올림한 좌표(약 1km 단위)만 Open-Meteo(open-meteo.com) 공개 API에 보내 현재 날씨를 받습니다. 계정·식별자·대화 내용은 보내지 않습니다.</li>
     </ul>
     <p>사용자의 대화·이미지·음성·측정 데이터는 어떤 경우에도 외부로 전송되지 않습니다.</p>
@@ -91,6 +93,8 @@
       <li>HuggingFace — AI 모델 파일 다운로드</li>
       <li>GitHub — 모델 카탈로그 호스팅</li>
       <li>Wikimedia(위키백과) — 웹 검색 켰을 때 검색어 질의</li>
+      <li>Google 뉴스 RSS · Bing 뉴스 RSS — 웹 검색 켰을 때 최신 정보 질문의 검색어 질의(1.1.2부터, 키 없음)</li>
+      <li>Brave Search · Tavily — 사용자가 직접 API 키를 입력한 경우에만 검색어 질의(1.1.2부터, 선택)</li>
       <li>Open-Meteo — 위치·웹 검색 켰을 때 날씨 조회(반올림 좌표)</li>
     </ul>
     <p>이들은 파일을 내려받는 용도로만 사용됩니다.</p>
